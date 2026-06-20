@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RevealOnScroll from '../components/RevealOnScroll';
 import './Home.css';
 
-const FRAME_COUNT = 899;
+const FRAME_COUNT = 356;
 
 const Home = () => {
   const canvasRef = useRef(null);
@@ -94,7 +94,7 @@ const Home = () => {
   useEffect(() => {
     const loadedImages = new Array(FRAME_COUNT);
     imagesRef.current = loadedImages;
-    let currentIndex = 1;
+    let currentIndex = 2; // Start from frame 2, frame 1 is loaded manually first
 
     const loadNext = () => {
       // Find next unloaded index
@@ -116,17 +116,29 @@ const Home = () => {
       
       img.onload = () => {
         loadedImages[targetIndex - 1] = img;
-        if (targetIndex === 1) setLoaded(true);
         loadNext();
       };
       img.onerror = () => loadNext();
       img.src = `/frames/frame_${targetIndex.toString().padStart(4, '0')}.jpg`;
     };
 
-    // Start 4 concurrent sequential loaders (max bandwidth without choking)
-    for (let i = 0; i < 4; i++) {
-      loadNext();
-    }
+    // Load the first frame immediately
+    const firstImg = new Image();
+    firstImg.onload = () => {
+      loadedImages[0] = firstImg;
+      setLoaded(true);
+      
+      // Delay the massive background loading slightly so the browser tab stops "spinning"
+      // and registers the page as fully loaded immediately.
+      setTimeout(() => {
+        // Start 4 concurrent sequential loaders
+        for (let i = 0; i < 4; i++) {
+          loadNext();
+        }
+      }, 500);
+    };
+    firstImg.src = `/frames/frame_0001.jpg`;
+
   }, []);
 
   // Initialize canvas context once
