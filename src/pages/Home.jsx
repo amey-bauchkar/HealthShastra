@@ -36,6 +36,9 @@ const Home = () => {
 
     const img = imgs[index];
     
+    // Ensure image is actually fully loaded before attempting to draw
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    
     let targetWidth = canvasSizeRef.current.width;
     let targetHeight = canvasSizeRef.current.height;
 
@@ -73,21 +76,22 @@ const Home = () => {
 
   // Preload all frames
   useEffect(() => {
-    const loadedImages = [];
-    let loadedCount = 0;
+    const loadedImages = new Array(FRAME_COUNT);
 
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
-      img.src = `/frames/frame_${i.toString().padStart(4, '0')}.jpg`;
       img.onload = () => {
-        loadedCount++;
-        if (loadedCount === FRAME_COUNT) {
-          imagesRef.current = loadedImages;
+        // Trigger initial render as soon as the VERY FIRST frame loads
+        if (i === 1) {
           setLoaded(true);
         }
       };
-      loadedImages.push(img);
+      img.src = `/frames/frame_${i.toString().padStart(4, '0')}.jpg`;
+      loadedImages[i - 1] = img;
     }
+    
+    // Assign array immediately so drawFrame can access whatever is loaded
+    imagesRef.current = loadedImages;
   }, []);
 
   // Initialize canvas context once
