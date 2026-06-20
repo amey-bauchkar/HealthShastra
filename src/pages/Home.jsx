@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RevealOnScroll from '../components/RevealOnScroll';
 import './Home.css';
 
-const FRAME_COUNT = 356;
+const FRAME_COUNT = 450;
 
 const Home = () => {
   const canvasRef = useRef(null);
