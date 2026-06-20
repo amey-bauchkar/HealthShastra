@@ -30,14 +30,30 @@ const Home = () => {
 
     if (!canvas || !ctx || !imgs || !imgs[index]) return;
 
-    // Skip if same frame — avoid redundant GPU draws
-    if (lastFrameRef.current === index) return;
-    lastFrameRef.current = index;
+    let drawIndex = index;
+    let img = imgs[drawIndex];
 
-    const img = imgs[index];
+    // Fallback algorithm: if requested frame isn't loaded yet, find the nearest loaded frame below it
+    while (drawIndex >= 0 && (!img || !img.complete || img.naturalWidth === 0)) {
+      drawIndex--;
+      img = imgs[drawIndex];
+    }
     
-    // Ensure image is actually fully loaded before attempting to draw
+    // If no previous frame is loaded, fallback to the nearest frame above it
+    if (!img || !img.complete || img.naturalWidth === 0) {
+      drawIndex = index;
+      while (drawIndex < FRAME_COUNT && (!img || !img.complete || img.naturalWidth === 0)) {
+        drawIndex++;
+        img = imgs[drawIndex];
+      }
+    }
+
+    // Ensure we finally found a valid image before attempting to draw
     if (!img || !img.complete || img.naturalWidth === 0) return;
+    
+    // Skip if same frame — avoid redundant GPU draws
+    if (lastFrameRef.current === drawIndex) return;
+    lastFrameRef.current = drawIndex;
     
     let targetWidth = canvasSizeRef.current.width;
     let targetHeight = canvasSizeRef.current.height;
@@ -74,24 +90,43 @@ const Home = () => {
     ctx.drawImage(img, ox, oy, dw, dh);
   }, []);
 
-  // Preload all frames
+  // Preload frames via sequential concurrent loaders to avoid choking the browser queue
   useEffect(() => {
     const loadedImages = new Array(FRAME_COUNT);
-
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new Image();
-      img.onload = () => {
-        // Trigger initial render as soon as the VERY FIRST frame loads
-        if (i === 1) {
-          setLoaded(true);
-        }
-      };
-      img.src = `/frames/frame_${i.toString().padStart(4, '0')}.jpg`;
-      loadedImages[i - 1] = img;
-    }
-    
-    // Assign array immediately so drawFrame can access whatever is loaded
     imagesRef.current = loadedImages;
+    let currentIndex = 1;
+
+    const loadNext = () => {
+      // Find next unloaded index
+      let targetIndex = -1;
+      while (currentIndex <= FRAME_COUNT) {
+        if (!loadedImages[currentIndex - 1]) {
+          targetIndex = currentIndex;
+          currentIndex++;
+          break;
+        }
+        currentIndex++;
+      }
+
+      if (targetIndex === -1 || targetIndex > FRAME_COUNT) return;
+
+      const img = new Image();
+      // Put a placeholder object so other concurrent loops don't grab the same index
+      loadedImages[targetIndex - 1] = { complete: false }; 
+      
+      img.onload = () => {
+        loadedImages[targetIndex - 1] = img;
+        if (targetIndex === 1) setLoaded(true);
+        loadNext();
+      };
+      img.onerror = () => loadNext();
+      img.src = `/frames/frame_${targetIndex.toString().padStart(4, '0')}.jpg`;
+    };
+
+    // Start 4 concurrent sequential loaders (max bandwidth without choking)
+    for (let i = 0; i < 4; i++) {
+      loadNext();
+    }
   }, []);
 
   // Initialize canvas context once
