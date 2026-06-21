@@ -1,0 +1,82 @@
+/* src/components/ColonDiagram.css */
+
+.colon-diagram {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.colon-diagram-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.colon-base-path {
+    stroke: var(--color-border);
+    stroke-width: 14;
+    stroke-linecap: round;
+    opacity: 0.5;
+}
+
+.colon-region-path {
+    stroke: var(--color-secondary-light);
+    stroke-width: 14;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.colon-region-dot {
+    fill: var(--color-primary);
+    transition: r 0.3s ease, fill 0.3s ease;
+}
+
+.colon-region-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    fill: var(--color-primary);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.colon-region:hover .colon-region-path,
+.colon-region:focus-visible .colon-region-path {
+    opacity: 0.9;
+}
+
+.colon-region:hover .colon-region-dot,
+.colon-region:focus-visible .colon-region-dot {
+    r: 9;
+    fill: var(--color-secondary);
+}
+
+.colon-region:hover .colon-region-label,
+.colon-region:focus-visible .colon-region-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.colon-region:focus-visible {
+    outline: none;
+}
+
+.colon-diagram-caption {
+    text-align: left;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    padding-left: 21%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .colon-region-path,
+    .colon-region-dot,
+    .colon-region-label {
+        transition: none;
+    }
+}
