@@ -289,3 +289,53 @@
         display: none;
     }
 }
+
+@media (max-width: 768px) {
+    .editorial-hero {
+        padding-top: 100px;
+        gap: 2rem;
+    }
+
+    .title {
+        font-size: clamp(2.5rem, 10vw, 4rem); /* Smaller min-size for mobile to prevent overflow */
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .organic-hero-img {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1/1; /* Keep it roundish on mobile */
+    }
+
+    .editorial-blocks-container {
+        padding: 8vh 5vw;
+    }
+
+    .editorial-block {
+        gap: 3rem;
+        margin-bottom: 12vh;
+    }
+
+    .block-number {
+        font-size: 8rem;
+        top: -40px;
+    }
+
+    .block-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .block-text p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .framed-image-container {
+        padding: 0.75rem;
+    }
+}
