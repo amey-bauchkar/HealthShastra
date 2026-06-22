@@ -1,182 +1,270 @@
-/* ── Canvas Background ──────────────────────────────────── */
-.video-background-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
+/* ── Ayurvedic Hero Section ─────────────────────────────── */
+.ayurveda-theme {
+  --color-ayur-dark: #12211c; /* Deep forest green / almost black */
+  --color-ayur-primary: #1a3028; /* Rich leaf green */
+  --color-ayur-gold: #d49a62; /* Warm copper/gold */
+  --color-ayur-gold-light: #f0c395;
+  --color-ayur-paper: #f9f6f0; /* Warm linen/parchment */
+}
+
+.ayurveda-hero {
+  min-height: 100vh;
+  background-color: var(--color-ayur-dark);
+  position: relative;
   overflow: hidden;
-}
-
-.scroll-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: transparent;
-}
-
-/* ── Content Wrapper ────────────────────────────────────── */
-.home-content-wrapper {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Scroll Sections ────────────────────────────────────── */
-.scroll-section {
-  position: relative;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 0 6rem;
+  padding: 8rem 2rem 4rem;
 }
 
-.scroll-section.align-left {
-  justify-content: flex-start;
-  text-align: left;
+/* ── Prana Mandala Background ── */
+.prana-mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150vw;
+  height: 150vw;
+  max-width: 2000px;
+  max-height: 2000px;
+  /* An elegant SVG mandala-like star pattern using multiple rotating circles and curves */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 5 C65 40 95 50 95 50 C95 50 65 60 50 95 C35 60 5 50 5 50 C5 50 35 40 50 5 Z' fill='none' stroke='rgba(212, 154, 98, 0.05)' stroke-width='0.3'/%3E%3Cpath d='M20 20 C45 35 80 20 80 20 C80 20 65 45 80 80 C55 65 20 80 20 80 C20 80 35 55 20 20 Z' fill='none' stroke='rgba(212, 154, 98, 0.03)' stroke-width='0.2'/%3E%3Ccircle cx='50' cy='50' r='38' fill='none' stroke='rgba(212, 154, 98, 0.04)' stroke-width='0.2'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='rgba(212, 154, 98, 0.05)' stroke-width='0.1'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: breatheRotate 45s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.scroll-section.align-left .hero-subtitle {
-  margin-left: 0;
-  margin-right: 0;
+@keyframes breatheRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.9); }
+  100% { transform: translate(-50%, -50%) rotate(30deg) scale(1.15); }
 }
 
-.scroll-section.align-right {
-  justify-content: flex-end;
-  text-align: right;
+.ayurveda-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.scroll-section.align-right .hero-subtitle {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.scroll-section.last-section {
-  height: auto;
-  min-height: 100vh;
-  align-items: flex-start;
-  padding-top: 8rem;
-  padding-bottom: 6rem;
-}
-
-/* ── Hero Content ───────────────────────────────────────── */
-.hero-content {
+/* ── Content Layout ── */
+.ayurveda-hero-content {
   position: relative;
   z-index: 10;
-  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  max-width: 1200px;
+  width: 100%;
 }
 
-.hero-content h1 {
+/* ── Jharokha Arch (Traditional Window) ── */
+.jharokha-arch {
+  flex: 1;
+  max-width: 420px;
+  width: 100%;
+  aspect-ratio: 0.7;
+  border-radius: 200px 200px 0 0;
+  border: 1px solid var(--color-ayur-gold);
+  padding: 0.75rem;
+  background: rgba(212, 154, 98, 0.05);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex; /* Ensures inner image respects the padding bounds perfectly */
+  flex-direction: column;
+}
+
+.jharokha-arch::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem; left: 0.75rem; right: 0.75rem; bottom: 0.75rem;
+  border-radius: 188px 188px 0 0;
+  border: 1px solid rgba(212, 154, 98, 0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.arch-image {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 188px 188px 0 0;
+  filter: sepia(0.2) brightness(0.9) contrast(1.1); /* Earthy, vintage film feel */
+  transition: filter 0.5s ease;
+}
+
+.jharokha-arch:hover .arch-image {
+  filter: sepia(0) brightness(1) contrast(1.1);
+}
+
+/* ── Text Content ── */
+.ayurveda-text-content {
+  flex: 1.2;
+}
+
+.sanskrit-accent {
+  font-family: 'Noto Sans Devanagari', 'Georgia', serif;
+  font-size: 1.6rem;
+  color: var(--color-ayur-gold);
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 10px rgba(212, 154, 98, 0.2);
+}
+
+.ayurveda-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.12;
-  margin-bottom: 1.8rem;
-  letter-spacing: -0.025em;
-  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
-}
-
-.hero-content h1 span {
-  display: block;
-  font-family: var(--font-accent);
-  font-style: italic;
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
   font-weight: 500;
-  color: #F8D9B6; /* Lighter gold for better contrast */
-  font-size: 0.85em;
-  letter-spacing: 0em;
-  margin-top: 0.15em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.9);
+  color: var(--color-ayur-paper);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
 }
 
-.hero-eyebrow {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #F8D9B6;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.9);
-}
-
-.hero-subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+.ayurveda-title em {
+  font-family: var(--font-accent);
+  color: var(--color-ayur-gold-light);
+  font-style: italic;
   font-weight: 400;
-  color: #ffffff; /* Pure white instead of transparent */
-  margin-bottom: 2.8rem;
-  line-height: 1.7;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  letter-spacing: 0.01em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 1px 5px rgba(0, 0, 0, 0.9);
+  display: block;
+  margin-top: 0.1em;
 }
 
-/* ── CTA Button ─────────────────────────────────────────── */
-.cta-button {
+.ayurveda-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--color-ayur-gold);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.ayurveda-divider::after {
+  content: '✦';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-ayur-gold);
+  font-size: 0.8rem;
+}
+
+.ayurveda-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: rgba(249, 246, 240, 0.85);
+  line-height: 1.8;
+  margin-bottom: 3.5rem;
+  max-width: 520px;
+  font-weight: 300;
+}
+
+/* ── Actions ── */
+.ayurveda-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ayurveda-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background: transparent;
-  color: white;
-  padding: 1rem 2.4rem;
-  border-radius: 100px;
+  justify-content: center;
   font-family: var(--font-body);
-  font-weight: 500;
   font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(255, 255, 255, 0.35);
   text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-.cta-button:hover {
-  background: white;
-  color: var(--color-primary);
-  border-color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+.ayurveda-btn.primary {
+  padding: 1.2rem 3rem;
+  background: transparent;
+  color: var(--color-ayur-gold);
+  border: 1px solid var(--color-ayur-gold);
+  overflow: hidden;
 }
 
-/* ── Decorative Line ────────────────────────────────────── */
-.hero-line {
-  width: 48px;
+.ayurveda-btn.primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--color-ayur-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+  z-index: -1;
+}
+
+.ayurveda-btn.primary:hover {
+  color: var(--color-ayur-dark);
+}
+
+.ayurveda-btn.primary:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.ayurveda-btn.text-link {
+  color: var(--color-ayur-paper);
+}
+
+.ayurveda-btn.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
   height: 1px;
-  background: var(--color-secondary);
-  margin: 0 auto 1.6rem auto;
-  opacity: 0.7;
+  background: rgba(249, 246, 240, 0.3);
+  transition: background 0.4s ease;
 }
-/* ── Standalone Treatments Section ──────────────────────── */
+
+.ayurveda-btn.text-link:hover {
+  color: var(--color-ayur-gold);
+}
+
+.ayurveda-btn.text-link:hover::after {
+  background: var(--color-ayur-gold);
+}
+
+
+/* ── Standalone Treatments Section ── */
 .treatments-standalone {
-  /* Removed solid background to let video show through */
-  color: #ffffff;
-  padding: 8rem 0;
+  background-color: var(--color-ayur-paper);
+  /* A rich, aesthetic botanical background that moves naturally with the page to ensure zero lag */
+  background-image: 
+    linear-gradient(to right, rgba(249, 246, 240, 0.96) 0%, rgba(249, 246, 240, 0.88) 100%),
+    url('/parallax_bg_2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-ayur-dark);
+  padding: 10rem 0;
   position: relative;
   z-index: 10;
 }
 
+/* Reusing the grid layout from before, but adopting Ayurveda colors */
 .treatments-inner {
+  position: relative;
+  z-index: 2; /* Keep content above background layers */
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 4rem;
-  gap: 6rem;
+  gap: 8rem;
 }
 
 .treatments-left {
@@ -188,62 +276,61 @@
 .treatments-eyebrow {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #F8D9B6;
+  color: var(--color-ayur-gold);
   margin-bottom: 2rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .treatments-heading {
   font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 600;
+  color: var(--color-ayur-dark);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-bottom: 2rem;
-  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin-bottom: 2.5rem;
 }
 
 .treatments-accent-line {
   width: 60px;
   height: 2px;
-  background: #F8D9B6;
+  background: var(--color-ayur-gold);
   margin-bottom: 2.5rem;
-  opacity: 0.8;
 }
 
 .treatments-desc {
   font-family: var(--font-body);
-  font-size: 1.15rem;
-  font-weight: 400; /* Increased for legibility */
-  color: #ffffff; /* Changed from rgba for better contrast */
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #4a5c53; /* Muted forest green */
   line-height: 1.8;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   max-width: 480px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 .treatments-cta {
   display: inline-flex;
   font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #0a0c0a;
-  background: #F8D9B6;
+  color: var(--color-ayur-dark);
+  background: transparent;
   text-decoration: none;
   padding: 1.2rem 3rem;
+  border: 1px solid var(--color-ayur-dark);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .treatments-cta:hover {
-  background: #ffffff;
+  background: var(--color-ayur-dark);
+  color: var(--color-ayur-paper);
   transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(18, 33, 28, 0.2);
 }
 
 .treatments-right {
@@ -255,97 +342,110 @@
   display: flex;
   align-items: baseline;
   padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(18, 33, 28, 0.1);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
 }
 
 .treatment-row:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(18, 33, 28, 0.1);
 }
 
 .treatment-row:hover {
-  border-color: rgba(248, 217, 182, 0.3);
+  border-color: var(--color-ayur-gold);
   padding-left: 2rem;
 }
 
 .treatment-num {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500; /* Increased font-weight */
-  color: #F8D9B6;
-  opacity: 1; /* Made fully opaque */
+  font-weight: 600;
+  color: var(--color-ayur-gold);
   width: 60px;
   flex-shrink: 0;
+  opacity: 0.7;
   transition: opacity 0.4s ease;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .treatment-name {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 500; /* Increased font weight */
-  color: #ffffff;
+  font-weight: 500;
+  color: var(--color-ayur-dark);
   letter-spacing: -0.01em;
   transition: color 0.4s ease;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .treatment-row:hover .treatment-name {
-  color: #F8D9B6;
+  color: var(--color-ayur-gold);
 }
 
 .treatment-row:hover .treatment-num {
   opacity: 1;
 }
 
-/* ── Scroll Indicator ───────────────────────────────────── */
-.scroll-indicator {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  opacity: 0.6;
-  animation: pulseDown 2s ease-in-out infinite;
-}
-
-.scroll-indicator span {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.scroll-arrow {
-  width: 1px;
-  height: 28px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-}
-
-@keyframes pulseDown {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
-  50% { transform: translateX(-50%) translateY(6px); opacity: 0.3; }
-}
-
 /* ── Responsive ─────────────────────────────────────────── */
-@media screen and (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.4rem;
+@media screen and (max-width: 1024px) {
+  .ayurveda-hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 4rem;
   }
-  .treatments-section {
-    padding: 3rem 1.5rem;
-    border-radius: 16px;
+  .jharokha-arch {
+    max-width: 320px;
   }
-  .treatments-grid {
+  .ayurveda-divider {
+    margin: 0 auto 2.5rem auto;
+  }
+  .ayurveda-divider::after {
+    display: none;
+  }
+  .ayurveda-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ayurveda-actions {
+    justify-content: center;
+  }
+  
+  .treatments-inner {
     grid-template-columns: 1fr;
+    gap: 4rem;
   }
-  .scroll-section {
-    padding: 0 1.2rem;
+  .treatments-left {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ayurveda-hero {
+    padding: 6rem 1.5rem 3rem;
+  }
+  .ayurveda-title {
+    font-size: 3rem;
+  }
+  .ayurveda-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ayurveda-btn {
+    width: 100%;
+  }
+  
+  .treatments-standalone {
+    padding: 5rem 0;
+  }
+  .treatments-inner {
+    padding: 0 2rem;
+  }
+  .treatment-name {
+    font-size: 1.6rem;
+  }
+  .treatment-row {
+    padding: 2rem 0;
+  }
+  .treatment-row:hover {
+    padding-left: 1rem;
   }
 }
