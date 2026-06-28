@@ -1,9 +1,10 @@
 :root {
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,400&display=swap');
   /* Typography — Elegant Serif + Clean Sans pairing */
   --font-display: 'Playfair Display', 'Georgia', serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
   --font-accent: 'Cormorant Garamond', 'Georgia', serif;
-  
+
   /* Refined Color Palette */
   --color-bg: #f6f5f0;
   --color-surface: #ffffff;
@@ -16,10 +17,10 @@
   --color-text-muted: #6b6b65;
   --color-text-light: rgba(255, 255, 255, 0.92);
   --color-border: #e0ddd5;
-  
+
   --spacing-unit: 8px;
   --border-radius: 16px;
-  
+
   font-family: var(--font-body);
   line-height: 1.65;
   font-weight: 400;
@@ -44,9 +45,15 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   color: var(--color-primary);
   margin-bottom: 1rem;
@@ -60,6 +67,7 @@ a {
   text-decoration: inherit;
   transition: color 0.3s ease;
 }
+
 a:hover {
   color: var(--color-secondary);
 }
@@ -77,10 +85,12 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 button:hover {
   background-color: var(--color-primary-light);
   transform: translateY(-2px);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -94,7 +104,8 @@ button:focus-visible {
 }
 
 /* ── Lenis Smooth Scroll Recommended CSS ── */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 

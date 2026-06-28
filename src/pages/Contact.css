@@ -44,14 +44,13 @@
     gap: 5vw;
     padding: 120px 8vw 80px;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
 }
 
 .hero-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 2vw;
 }
 
 /* Sanskrit eyebrow removed — .contact-eyebrow retained for
@@ -96,6 +95,7 @@
     gap: 0.75rem;
     /* Push card column towards the right margin */
     padding-left: 2vw;
+
 }
 
 .contact-card {
@@ -493,15 +493,75 @@
 }
 
 @media (max-width: 768px) {
+    .contact-page {
+        overflow-x: hidden;
+    }
+
     .contact-hero {
-        padding: 110px 6vw 50px;
+        padding: 100px 6vw 50px;
+        grid-template-columns: 1fr;
+        min-height: unset;
+        gap: 2.5rem;
+        max-width: 100%;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .contact-title {
+        font-size: clamp(2.4rem, 11vw, 4rem);
+    }
+
+    .contact-subtitle {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .hero-right {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .contact-card {
+        width: 100%;
+    }
+
+    .centres-section {
+        padding: 6vh 6vw;
+    }
+
+    .centres-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .map-frame {
+        height: 260px;
+    }
+
+    .appointment-notice {
+        max-width: 100%;
+    }
+
+    .enquiry-section {
+        padding: 6vh 6vw;
+    }
+
+    .enquiry-inner {
+        margin: 0 auto;
+        width: 100%;
     }
 
     .form-row {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
-    .contact-title {
-        font-size: clamp(8rem, 15vw, 17rem);
+    .form-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
     }
 }

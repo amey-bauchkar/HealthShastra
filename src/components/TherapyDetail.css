@@ -1,8 +1,10 @@
 /* src/components/TherapyDetail.css */
 
 .editorial-page {
-    background-color: #171311 !important; /* Deep Obsidian */
-    color: #e8dcca !important; /* Soft Almond */
+    background-color: #171311 !important;
+    /* Deep Obsidian */
+    color: #e8dcca !important;
+    /* Soft Almond */
     min-height: 100vh;
     font-family: var(--font-body);
     overflow-x: hidden;
@@ -44,7 +46,8 @@
     font-size: 0.9rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: #c96b42; /* Burnt Copper */
+    color: #c96b42;
+    /* Burnt Copper */
     margin-bottom: 2rem;
 }
 
@@ -76,19 +79,31 @@
 .organic-hero-img {
     width: 100%;
     max-width: 600px;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     filter: sepia(0.3) brightness(0.8) contrast(1.1);
-    box-shadow: -20px 20px 60px rgba(0,0,0,0.5);
+    box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.5);
     animation: morph 15s ease-in-out infinite;
 }
 
 @keyframes morph {
-    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    34% {
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+
+    67% {
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
 }
 
 /* 2. ALTERNATING EDITORIAL BLOCKS */
@@ -133,6 +148,7 @@
 .editorial-block.reverse .block-visual {
     order: 2;
 }
+
 .editorial-block.reverse .block-content {
     order: 1;
 }
@@ -148,7 +164,8 @@
     left: -40px;
     font-family: var(--font-display);
     font-size: 15rem;
-    color: rgba(201, 107, 66, 0.08); /* Faint Copper */
+    color: rgba(201, 107, 66, 0.08);
+    /* Faint Copper */
     line-height: 1;
     z-index: -1;
     pointer-events: none;
@@ -186,10 +203,12 @@
     max-width: 550px;
     position: relative;
     padding: 1.5rem;
-    background: #1e1816; /* Slightly lighter obsidian card */
+    background: #1e1816;
+    /* Slightly lighter obsidian card */
     border-radius: 12px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-    border: 1px solid rgba(201, 107, 66, 0.15); /* Subtle copper frame */
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(201, 107, 66, 0.15);
+    /* Subtle copper frame */
     transition: transform 0.5s ease;
 }
 
@@ -238,7 +257,10 @@
 
 .btn-bg {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: #c96b42;
     transform: scaleX(0);
     transform-origin: right;
@@ -250,6 +272,7 @@
     transform: scaleX(1);
     transform-origin: left;
 }
+
 .terra-btn:hover .btn-text {
     color: #171311;
 }
@@ -261,30 +284,33 @@
         padding-top: 150px;
         text-align: center;
     }
-    
+
     .hero-image-layer {
         justify-content: center;
         margin-top: 2rem;
     }
-    
-    .editorial-block, .editorial-block.reverse {
+
+    .editorial-block,
+    .editorial-block.reverse {
         grid-template-columns: 1fr;
         gap: 4rem;
         text-align: center;
     }
-    
+
     .editorial-block.reverse .block-visual {
-        order: 1; /* Reset order for mobile */
+        order: 1;
+        /* Reset order for mobile */
     }
+
     .editorial-block.reverse .block-content {
         order: 2;
     }
-    
+
     .block-number {
         left: 50%;
         transform: translateX(-50%);
     }
-    
+
     .massive-watermark {
         display: none;
     }
@@ -297,7 +323,8 @@
     }
 
     .title {
-        font-size: clamp(2.5rem, 10vw, 4rem); /* Smaller min-size for mobile to prevent overflow */
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        /* Smaller min-size for mobile to prevent overflow */
     }
 
     .subtitle {
@@ -308,7 +335,8 @@
     .organic-hero-img {
         max-width: 100%;
         height: auto;
-        aspect-ratio: 1/1; /* Keep it roundish on mobile */
+        aspect-ratio: 1/1;
+        /* Keep it roundish on mobile */
     }
 
     .editorial-blocks-container {

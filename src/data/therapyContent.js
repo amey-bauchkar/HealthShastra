@@ -116,7 +116,7 @@ export const therapyContent = {
     'neuro': {
         title: "Neurodegenerative | Diseases",
         subtitle: "For MND / ALS and MS patients, the most important factor is improving quality of life — physically, emotionally, and daily.",
-        heroImage: "/neuro_hero_1782389740377.png",
+        heroImage: "/neuro_hero_new.png",
         structuredSections: [
             {
                 title: "The Unknown Causes",
@@ -190,11 +190,11 @@ export const therapyContent = {
     'ozone': {
         title: "Ozone | Therapy",
         subtitle: "First developed in Germany over 125 years ago, Ozone Therapy is today recognised in several countries around the world as a powerful, natural healer.",
-        heroImage: "/ozone_hero_1782389893436.png",
+        heroImage: "/ozone_hero_new.png",
         structuredSections: [
             {
                 title: "What Is Ozone?",
-                imageSrc: "/ozone_what_is_1782389908279.png",
+                imageSrc: "/ozone_what_is_new.png",
                 content: [
                     "Ozone is oxygen with an extra molecule added. It is a very active and reactive form of oxygen which quickly combines with blood, lymph and other tissues of the body — purifying them at a cellular level.",
                     "Circulation of clean, oxygen-carrying blood is a basic requirement for optimum health, and this can be achieved by bringing ozone into the body. Studies have shown that ozone works in a variety of powerful ways."
@@ -202,7 +202,7 @@ export const therapyContent = {
             },
             {
                 title: "How Ozone Heals",
-                imageSrc: "/accumulation_release_1782133728736.png", // swap with ozone image
+                imageSrc: "/ozone_heals_new.png",
                 content: [
                     "<strong>Destroys pathogens:</strong> It destroys viruses, bacteria, yeast, fungus and protozoa — eliminating the root cause of many chronic conditions.",
                     "<strong>Purifies & circulates:</strong> It stimulates the immune system, cleans arteries and veins, improves circulation, and purifies the blood and lymph.",
@@ -211,7 +211,7 @@ export const therapyContent = {
             },
             {
                 title: "The Treatment",
-                imageSrc: "/hydrotherapy_process_1782133741608.png", // swap with ozone image
+                imageSrc: "/ozone_treatment_new.png",
                 content: [
                     "Each treatment takes approximately <strong>30–45 minutes</strong> and is administered <strong>2–3 times a week</strong> — making it one of the most time-efficient therapies available.",
                     "Ozone Therapy is a safe, natural complementary therapy with an anti-ageing effect. It works alongside your body's own systems, amplifying what nature already knows how to do."
