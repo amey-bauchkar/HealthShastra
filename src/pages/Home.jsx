@@ -14,37 +14,37 @@ const Home = () => {
 
   return (
     <div className="home-page ayurveda-theme">
-      
+
       {/* ── Ayurvedic Hero Section ── */}
       <section className="ayurveda-hero">
-        
+
         {/* Prana (Life Force) Mandala Background */}
         <div className="prana-mandala"></div>
         <div className="ayurveda-noise"></div>
-        
+
         <div className="ayurveda-hero-content">
-          
+
           <RevealOnScroll className="jharokha-arch">
             <img src="/ayurvedic_wellness_center.png" alt="Ayurvedic Botanical Healing" className="arch-image" />
           </RevealOnScroll>
-          
+
           <div className="ayurveda-text-content">
             <RevealOnScroll>
               <div className="sanskrit-accent">आयुर्वेद</div>
               <h1 className="ayurveda-title">
-                The Science<br/>
+                The Science<br />
                 <em>of Life</em>
               </h1>
-              
+
               <div className="ayurveda-divider"></div>
-              
+
               <p className="ayurveda-subtitle">
                 Health Shastra revives the ancient wisdom of Ayurveda, bringing 5,000 years of holistic healing into the modern age. We treat the root cause, balancing your Doshas to restore pure, lasting vitality.
               </p>
-              
+
               <div className="ayurveda-actions">
                 <Link to="/contact" className="ayurveda-btn primary">Begin Healing</Link>
-                <Link to="/about" className="ayurveda-btn text-link">The Shastra Way</Link>
+
               </div>
             </RevealOnScroll>
           </div>
@@ -61,8 +61,8 @@ const Home = () => {
               <h2 className="treatments-heading">Effective<br />Healing For</h2>
               <div className="treatments-accent-line"></div>
               <p className="treatments-desc">
-                Health Shastra helps people overcome their health problems, without resorting 
-                to any form of harsh medication, and without causing any adverse side effects. 
+                Health Shastra helps people overcome their health problems, without resorting
+                to any form of harsh medication, and without causing any adverse side effects.
                 Pure, natural, and profound.
               </p>
               <Link to="/contact" className="treatments-cta">Consult a Vaidya →</Link>

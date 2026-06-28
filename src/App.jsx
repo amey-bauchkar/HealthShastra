@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Therapies from './components/Therapies';
 import TherapyDetail from './components/TherapyDetail';
@@ -47,6 +48,7 @@ function App() {
           <Route path="/therapy/:id" element={<TherapyDetail />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </main>
     </Router>
   );

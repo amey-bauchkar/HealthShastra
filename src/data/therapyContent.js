@@ -106,11 +106,7 @@ export const therapyContent = {
                 ]
             }
         ],
-        testimonial: {
-            heading: "Health Is Your Most Important Possession",
-            imageSrc: "/detox_testimonial_1782387467125.png",
-            body: "Detoxify, transform your life, and stay healthy. A total detox leading to improvement in blood circulation and skin is not a luxury — it is the foundation upon which lasting wellness is built."
-        }
+        testimonial: null
     }
     ,
     'neuro': {
