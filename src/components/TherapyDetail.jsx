@@ -77,7 +77,7 @@ const TherapyDetail = () => {
                                 <div className="block-visual">
                                     {section.imageSrc && (
                                         <div className="framed-image-container">
-                                            <img src={section.imageSrc} alt={section.title} className="framed-img" />
+                                            <img src={section.imageSrc} alt={section.title} className="framed-img" loading="lazy" />
                                         </div>
                                     )}
                                 </div>
@@ -106,7 +106,7 @@ const TherapyDetail = () => {
                         {content.testimonial.imageSrc && (
                             <div className="block-visual">
                                 <div className="framed-image-container">
-                                    <img src={content.testimonial.imageSrc} alt="Testimonial Imagery" className="framed-img" />
+                                    <img src={content.testimonial.imageSrc} alt="Testimonial Imagery" className="framed-img" loading="lazy" />
                                 </div>
                             </div>
                         )}

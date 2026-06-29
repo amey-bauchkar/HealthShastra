@@ -40,7 +40,9 @@
 .contact-hero {
     display: grid;
     grid-template-columns: 1fr 400px;
-    align-items: start;
+    align-items: center;
+    align-content: center;
+    min-height: 100vh;
     gap: 5vw;
     padding: 140px 8vw 60px;
     max-width: 1280px;
@@ -256,54 +258,209 @@
     font-weight: 600;
 }
 
+.centres-map {
+    height: 100%;
+}
+
 .map-frame {
     width: 100%;
-    height: 440px;
+    height: 100%;
+    min-height: 440px;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(201, 168, 76, 0.18);
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
 }
 
-/* ── ENQUIRY FORM ───────────────────────────────────────────
-   Unified max-width: 1280px, left-aligned to match page grid.
-   Inner form constrained to 860px for readability.
+/* ── ENQUIRY SECTION — PREMIUM GLASSMORPHIC REDESIGN ──────
+   Clean two-column layout with frosted glass form card.
 ──────────────────────────────────────────────────────────── */
 .enquiry-section {
-    padding: 8vh 8vw;
+    padding: 10vh 8vw;
     border-top: 1px solid rgba(232, 220, 202, 0.06);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .enquiry-inner {
-    max-width: 860px;
-    margin: 0 auto 0 0;
-    /* left-align within the 8vw gutter */
+    display: grid;
+    grid-template-columns: 1fr auto 1.2fr;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
 }
 
-/* Constrain to match the left column of the page grid */
-@supports (max-width: calc(1280px * 0.45)) {
-    .enquiry-inner {
-        max-width: min(860px, 100%);
-    }
+/* ── LEFT COLUMN ─────────────────────────────────────────── */
+.enquiry-left {
+    padding-right: 4vw;
+    display: flex;
+    flex-direction: column;
 }
 
-.enquiry-header {
-    margin-bottom: 2.5rem;
+.enquiry-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 400;
+    color: #e8dcca;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.enquiry-title em {
+    font-style: italic;
+    color: #c9a84c;
 }
 
 .enquiry-desc {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: rgba(232, 220, 202, 0.55);
-    max-width: 460px;
-    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(232, 220, 202, 0.6);
+    max-width: 420px;
+    margin-bottom: 3rem;
 }
 
-.form-row {
+/* Testimonials */
+.enquiry-testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: auto;
+}
+
+.enquiry-testimonial {
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    background: rgba(201, 168, 76, 0.03);
+    border-left: 2px solid rgba(201, 168, 76, 0.4);
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.enquiry-testimonial:hover {
+    background: rgba(201, 168, 76, 0.06);
+    border-color: #c9a84c;
+}
+
+.quote-icon {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: rgba(201, 168, 76, 0.12);
+    line-height: 1;
+    position: absolute;
+    top: 0.1rem;
+    left: 0.5rem;
+    pointer-events: none;
+}
+
+.testimonial-text {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: rgba(232, 220, 202, 0.85);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Quick Contact Strips */
+.quick-contact-strips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(232, 220, 202, 0.03);
+    border: 1px solid rgba(232, 220, 202, 0.06);
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.quick-strip:hover {
+    border-color: rgba(201, 168, 76, 0.25);
+}
+
+.strip-icon {
+    font-size: 0.65rem;
+    color: #c9a84c;
+}
+
+.strip-text {
+    font-size: 0.85rem;
+    color: rgba(232, 220, 202, 0.65);
+    letter-spacing: 0.04em;
+}
+
+/* ── GOLD DIVIDER ────────────────────────────────────────── */
+.enquiry-divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(201, 168, 76, 0.15) 15%,
+        rgba(201, 168, 76, 0.35) 50%,
+        rgba(201, 168, 76, 0.15) 85%,
+        transparent 100%
+    );
+    margin: 0 2vw;
+}
+
+/* ── GLASSMORPHIC FORM CARD ──────────────────────────────── */
+.enquiry-card {
+    background: rgba(232, 220, 202, 0.025);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(232, 220, 202, 0.04);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.enquiry-card:hover {
+    border-color: rgba(201, 168, 76, 0.22);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(232, 220, 202, 0.06);
+}
+
+/* ── FORM LAYOUT ─────────────────────────────────────────── */
+.enquiry-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    margin-bottom: 1.2rem;
+    gap: 1.25rem;
 }
 
 .form-group {
@@ -312,57 +469,53 @@
     gap: 0.5rem;
 }
 
-.form-group--full {
-    margin-bottom: 1.2rem;
-}
-
 .form-group label {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(232, 220, 202, 0.45);
+    color: rgba(232, 220, 202, 0.4);
 }
 
 .form-group input,
 .form-group textarea {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(232, 220, 202, 0.1);
-    border-radius: 8px;
-    padding: 0.85rem 1.1rem;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(232, 220, 202, 0.08);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
     color: #e8dcca;
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     resize: none;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(232, 220, 202, 0.2);
+    color: rgba(232, 220, 202, 0.18);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: rgba(201, 168, 76, 0.45);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.06);
 }
 
 .form-footer {
-    margin-top: 0.5rem;
+    padding-top: 0.5rem;
 }
 
-/* ── SHARED BUTTON ──────────────────────────────────────── */
 .form-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 1rem 2.8rem;
+    padding: 1.1rem 3rem;
     background: transparent;
     border: 1px solid rgba(201, 168, 76, 0.45);
     border-radius: 40px;
     color: #e8dcca;
     font-family: var(--font-body);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     cursor: pointer;
@@ -396,8 +549,13 @@
 
 /* ── SUCCESS STATE ──────────────────────────────────────── */
 .form-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 4rem 2rem;
+    min-height: 380px;
+    padding: 2rem;
 }
 
 .success-icon {
@@ -499,7 +657,20 @@
     }
 
     .enquiry-inner {
-        margin: 0 auto;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .enquiry-left {
+        padding-right: 0;
+    }
+
+    .enquiry-divider {
+        display: none;
+    }
+
+    .enquiry-card {
+        padding: 2.5rem;
     }
 }
 
@@ -558,11 +729,19 @@
     }
 
     .enquiry-inner {
-        margin: 0 auto;
-        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .form-row {
+    .enquiry-divider {
+        display: none;
+    }
+
+    .enquiry-card {
+        padding: 1.75rem;
+    }
+
+    .form-row-2col {
         grid-template-columns: 1fr;
         gap: 1rem;
     }

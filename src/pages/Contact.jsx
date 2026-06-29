@@ -23,7 +23,6 @@ const Contact = () => {
             {/* ── HERO + CARDS ────────────────────────────────── */}
             <section className="contact-hero">
                 <div className="hero-left">
-                    {/* Sanskrit eyebrow removed per brief */}
                     <h1 className="contact-title">
                         Begin Your<br />
                         <em>Healing Journey</em>
@@ -84,7 +83,6 @@ const Contact = () => {
                             <p>A health resort with complete<br />Health Shastra treatments.</p>
                         </div>
 
-                        {/* Appointment notice — elevated editorial treatment */}
                         <div className="appointment-notice">
                             <span className="appointment-notice-text">
                                 Consultations &amp; Treatment by Prior Appointment Only
@@ -112,65 +110,95 @@ const Contact = () => {
             {/* ── ENQUIRY FORM ────────────────────────────────── */}
             <section className="enquiry-section">
                 <div className="enquiry-inner">
-                    <div className="enquiry-header">
+
+                    {/* LEFT COLUMN */}
+                    <div className="enquiry-left">
                         <span className="section-eyebrow">Enquire Now</span>
-                        <h2 className="section-title">Send an Enquiry</h2>
+                        <h2 className="enquiry-title">
+                            Begin Your<br />
+                            <em>Wellness Journey</em>
+                        </h2>
                         <p className="enquiry-desc">
                             Fill in your details and one of our wellness consultants
                             will be in touch within 24 hours.
                         </p>
+
+                        <div className="enquiry-testimonials">
+                            <div className="enquiry-testimonial">
+                                <span className="quote-icon">&ldquo;</span>
+                                <p className="testimonial-text">
+                                    The care and attention I received completely transformed my approach to wellness. A true sanctuary for body and soul.
+                                </p>
+                                <p className="testimonial-author">— A Grateful Guest</p>
+                            </div>
+                            <div className="enquiry-testimonial">
+                                <span className="quote-icon">&ldquo;</span>
+                                <p className="testimonial-text">
+                                    Health Shastra's holistic treatments provided healing I couldn't find anywhere else. The environment is incredibly serene.
+                                </p>
+                                <p className="testimonial-author">— Wellness Seeker</p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    {submitted ? (
-                        <div className="form-success">
-                            <span className="success-icon">✦</span>
-                            <h3>Thank you for reaching out.</h3>
-                            <p>We will contact you within 24 hours to schedule your consultation.</p>
-                            <button className="form-btn" onClick={() => setSubmitted(false)}>
-                                <span>Send Another</span>
-                                <div className="btn-shine" />
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="enquiry-form">
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" name="fullName" value={formData.fullName}
-                                        onChange={handleChange} placeholder="Your full name" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Contact No.</label>
-                                    <input type="tel" name="contactNo" value={formData.contactNo}
-                                        onChange={handleChange} placeholder="+91 00000 00000" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Email Address</label>
-                                    <input type="email" name="email" value={formData.email}
-                                        onChange={handleChange} placeholder="you@example.com" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Subject</label>
-                                    <input type="text" name="subject" value={formData.subject}
-                                        onChange={handleChange} placeholder="e.g. Colon Hydrotherapy enquiry" />
-                                </div>
-                            </div>
-                            <div className="form-group form-group--full">
-                                <label>Message</label>
-                                <textarea name="message" rows="4" value={formData.message}
-                                    onChange={handleChange}
-                                    placeholder="Tell us about your health goals or questions..." />
-                            </div>
-                            <div className="form-footer">
-                                <button className="form-btn" onClick={handleSubmit}>
-                                    <span>Send Enquiry</span>
+                    {/* GOLD DIVIDER */}
+                    <div className="enquiry-divider" />
+
+                    {/* RIGHT COLUMN — GLASSMORPHIC FORM CARD */}
+                    <div className="enquiry-card">
+                        {submitted ? (
+                            <div className="form-success">
+                                <span className="success-icon">✦</span>
+                                <h3>Thank you for reaching out.</h3>
+                                <p>We will contact you within 24 hours to schedule your consultation.</p>
+                                <button className="form-btn" onClick={() => setSubmitted(false)}>
+                                    <span>Send Another</span>
                                     <div className="btn-shine" />
                                 </button>
                             </div>
-                        </div>
-                    )}
+                        ) : (
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-row-2col">
+                                    <div className="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" name="fullName" value={formData.fullName}
+                                            onChange={handleChange} placeholder="Your full name" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Contact No.</label>
+                                        <input type="tel" name="contactNo" value={formData.contactNo}
+                                            onChange={handleChange} placeholder="+91 00000 00000" />
+                                    </div>
+                                </div>
+                                <div className="form-row-2col">
+                                    <div className="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" name="email" value={formData.email}
+                                            onChange={handleChange} placeholder="you@example.com" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Subject</label>
+                                        <input type="text" name="subject" value={formData.subject}
+                                            onChange={handleChange} placeholder="e.g. Colon Hydrotherapy" />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>Message</label>
+                                    <textarea name="message" rows="5" value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Tell us about your health goals or questions..." />
+                                </div>
+                                <div className="form-footer">
+                                    <button type="submit" className="form-btn">
+                                        <span>Send Enquiry</span>
+                                        <div className="btn-shine" />
+                                    </button>
+                                </div>
+                            </form>
+                        )}
+                    </div>
+
                 </div>
             </section>
 

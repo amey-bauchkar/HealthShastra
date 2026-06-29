@@ -11,9 +11,6 @@ const RevealOnScroll = ({ children, className = '', delay = 0 }) => {
         // Toggle visibility based on whether it is in the viewport
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          // Hide it when it leaves the viewport so it can animate in again when scrolling back up
-          setIsVisible(false); 
         }
       },
       {
